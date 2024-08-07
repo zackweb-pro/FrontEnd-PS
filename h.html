@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hr {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        }
+
+        .hr::before,
+        .hr::after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid #000;
+        }
+
+        .hr:not(:empty)::before {
+        margin-right: .25em;
+        }
+
+        .hr:not(:empty)::after {
+        margin-left: .25em;
+        }
+    </style>
+</head>
+<body>
+    <div class="hr">
+        don't have an account
+    </div>
+</body>
+</html>

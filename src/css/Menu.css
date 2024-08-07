@@ -1,0 +1,47 @@
+.menu{
+    color: white;
+    height: 100vh;
+    /* background-color: black; */
+    width: fit-content;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: left;
+    flex-direction: column;
+}
+.menu ul {
+    list-style: none;
+}
+.menu ul li a{
+    display: block;
+    color: white;
+    opacity: .5;
+    text-decoration: none;
+    margin: 18px 0;
+    font-size: 21px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px
+}
+.menu ul li a.active-link{
+
+    opacity: 1;
+
+}
+
+.menu .infos .name{
+    font-size: 27px;
+}
+.menu .infos .email{
+    font-size: 17px;
+    opacity: .6;
+}
+.menu .menu-icon{
+    font-size: 40px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    z-index: 7;
+}
