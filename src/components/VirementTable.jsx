@@ -27,6 +27,7 @@ export default function Whatisnew(){
             </div>
             <div className="sectiontwo">
             <div className="virement-history">
+
                     <VirementHistory depense="2000000" semployee="80.000dhs (150dhs)" srespo="100.000" autre="0" anconf="0" aconf="143.324" date="mars, 2024"></VirementHistory>
                     <VirementHistory depense="2000000" semployee="80.000dhs (150dhs)" srespo="100.000" autre="0" anconf="0" aconf="143.324" date="june, 2024"></VirementHistory>
                     <VirementHistory depense="2000000" semployee="80.000dhs (150dhs)" srespo="100.000" autre="0" anconf="0" aconf="143.324" date="may, 2024"></VirementHistory>

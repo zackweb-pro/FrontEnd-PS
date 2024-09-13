@@ -14,8 +14,8 @@ import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
 import { HiUsers } from "react-icons/hi2";
 import { FaMoneyCheckAlt } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
-
-function Menu(props){
+import {NavLink} from "react-router-dom";
+export default function Menu(props){
     let [icon, seticon] = useState(<LiaTimesSolid  className='menu-cancel'></LiaTimesSolid>)
     function clicking(e){
         console.log("hahahahaha")
@@ -28,16 +28,22 @@ function Menu(props){
 
        }
     }
-    function activelink(){
-        Array.from(document.querySelector(".menu-links").children).forEach(e => {
-            if(e.children[0].getAttribute("href") == window.location.pathname){
-                e.children[0].classList.add("active-link")
-            }
+    // let [activelink, setactivelink] = useState("")
+    function activeLinkFun(e){
+        Array.from(document.querySelector(".menu-links").children).forEach(c => {
+           
+                c.children[0].classList.remove("active-link")
+            
         });
+        Array.from(document.querySelector(".menu-links").children).forEach(c => {
+           
+            if(c.classList.contains(window.location.pathname)){
+                c.children[0].classList.add("active-link")
+            }
+        
+    });
     }
-    window.onload = ()=>{
-        activelink();
-    }
+
     return(
             <div className='menu'>
                 <div className="menu-icon" onClick={(e) => {clicking(e)}}>{icon}</div>
@@ -47,18 +53,17 @@ function Menu(props){
                 </div>
                 <nav>
                     <ul className='menu-links'>
-                        <li><a href='/dashboard'><MdDashboard /> Dashboard</a></li>
-                        <li><a  href='/traitementdemande'><VscRequestChanges /> Les demandes</a></li>
-                        <li><a href='/achatnonconfirmee'><FaShoppingCart /> Achat non confirmée</a></li>
-                        <li><a href='/categorie'><BiSolidCategoryAlt /> Categorie</a></li>
-                        <li><a href='/pointage'><TbRosetteDiscountCheckFilled /> Pointage</a></li>
-                        <li><a href='/personnels'><HiUsers /> les Personnels</a></li>
-                        <li><a href='/virement'><FaMoneyCheckAlt /> Virement</a></li>
-                        <li><a href='/settings'><IoMdSettings /> Settings</a></li>
-                        <li><a href='/'><CiLogout ></CiLogout> Log out</a></li>
+                        <li><NavLink to='/dashboard'  className={({isActive}) => isActive ? "active-link" : "" }><MdDashboard /> Dashboard</NavLink></li>
+                        <li><NavLink  to='/traitementdemande'  className={({isActive}) => isActive ? "active-link" : "" }><VscRequestChanges /> Les demandes</NavLink></li>
+                        <li><NavLink to='/achatnonconfirmee'  className={({isActive}) => isActive ? "active-link" : "" }><FaShoppingCart /> Achat non confirmée</NavLink></li>
+                        <li><NavLink to='/categorie'  className={({isActive}) => isActive ? "active-link" : "" }><BiSolidCategoryAlt /> Categorie</NavLink></li>
+                        <li><NavLink to='/pointage'   className={({isActive}) => isActive ? "active-link" : "" }><TbRosetteDiscountCheckFilled /> Pointage</NavLink></li>
+                        <li><NavLink to='/personnels'  className={({isActive}) => isActive ? "active-link" : "" }><HiUsers /> les Personnels</NavLink></li>
+                        <li><NavLink to='/virement'   className={({isActive}) => isActive ? "active-link" : "" }><FaMoneyCheckAlt /> Virement</NavLink></li>
+                        <li><NavLink to='/settings'  className={({isActive}) => isActive ? "active-link" : "" }><IoMdSettings /> Settings</NavLink></li>
+                        <li><NavLink to='/'><CiLogout ></CiLogout> Log out</NavLink></li>
                     </ul>
                 </nav>
             </div>
     )
 }
-export default Menu;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Pointagerow from './Pointagerow';
 import { TbChartDots3 } from "react-icons/tb";
-
+import { useEffect } from 'react';
 export default function Achats(){
     let [clicked, checkclicked] = useState()
     function checkall(e){
@@ -14,6 +14,23 @@ export default function Achats(){
                 }   
         })
     }
+    const [employees, setEmployees] = useState([]);
+
+    let employeesFun = async() => {
+        await fetch("http://localhost:8080/api/employees")
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setEmployees(data);
+            })
+            .catch(err => {
+                console.error('Fetch error:', err);
+            });
+    }
+    useEffect(()=>{
+        employeesFun()
+    }, []);
     return(
         <table className='achats'>
             <tr className='achats-title'>
@@ -25,10 +42,11 @@ export default function Achats(){
                 <th>Etat d'aujourd'hui</th>
                 <th>Changer l'etat</th>
             </tr>
-            <Pointagerow name="zakaria oumghar" chef="Mohamed Lousour" cni="WAXXXXXX" status="present" totale="21jrs"  date="01/08/2024"></Pointagerow>
-            <Pointagerow name="zakaria oumghar" chef="Mohamed Lousour" status="neutre" cni="WAXXXXXX" totale="21jrs"  date="01/08/2024"></Pointagerow>
-            <Pointagerow name="zakaria oumghar" chef="Mohamed Lousour" cni="WAXXXXXX"  status="abscent" totale="21jrs"  date="01/08/2024"></Pointagerow>
-            <Pointagerow name="zakaria oumghar" chef="Mohamed Lousour" cni="WAXXXXXX"  status="present" totale="21jrs"  date="01/08/2024"></Pointagerow>
+                    {/* {console.log(employees)}  */}
+        {employees?.length ? employees.map((employee, i)=> <Pointagerow name={`${employee.prenom} ${employee.nom}`} chef={employee.respo_id} cni={employee.cni} status={employee.Etat_today.toLowerCase()} totale={`${employee.jours_totale}jrs`}></Pointagerow>)
+            : <h3 style={{color: "#636364"}}>There are no records yet</h3>
+        }
+
 
         </table>
     )

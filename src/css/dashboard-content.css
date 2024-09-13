@@ -175,7 +175,9 @@
 }
 .totale-depense-title{
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    /* gap: 5px 50px; */
+
 }
 .totale-depense-icon{
     color: gold;
@@ -543,6 +545,9 @@
 }
 .virement-table{
     min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 
 }
 .virement-table .sectionone{
@@ -664,3 +669,136 @@
     align-items: center;
     flex-direction: column;
 }
+.card-virement {
+    /* border: 1px solid black; */
+    position: relative;
+    padding: 1rem 2rem;
+    background: red;
+    background-color: #08AEEA;
+    background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
+    
+    background-color: #21D4FD;
+background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+
+
+    width: fit-content;
+
+    overflow: hidden;
+    border-radius: 1rem;
+    color: hsl(54.9, 96.7%, 88%);
+    margin: 10px;
+
+  }
+  
+  .card-virement::before {
+    content: "";
+    width: 1000px;
+    height: 1000px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    animation: rotating 2s infinite cubic-bezier(0.45, 0, 0.55, 1);
+    transform-origin: center;
+    background: conic-gradient(
+      rgba(255, 255, 255, 0.6),
+      transparent,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent,
+      transparent,
+      rgba(255, 255, 255, 0.6)
+    );
+  }
+  
+  .card-virement::after {
+    content: "";
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    background: inherit;
+    border-radius: 0.8rem;
+    z-index: 1;
+  }
+  
+  .card-content-virement {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+  }
+  
+  @keyframes rotating {
+    from {
+      transform: translate(-500px, -500px) rotate(0deg);
+    }
+    to {
+      transform: translate(-500px, -500px) rotate(360deg);
+    }
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  .totale-shortcut{
+    font-size: 18px;
+    font-weight: 800;
+    margin-left: 55px;
+    background-color: #FFDEE9;
+    background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+    
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+        /* line-height: 3; */
+
+  }
+  
+  .shrink-div-content{
+        --max-line: 0;
+        --line-height: 1.4;
+        font-size: 1rem;
+        max-height: calc(var(--max-line) * 1rem * var(--line-height));
+        line-height: var(--line-height);
+        overflow: hidden;
+        position: relative;
+  }
+  /* .shrink-div-content::before{
+    content:"";
+    position: absolute;
+    height: calc(1em * var(--line-height));
+    width: 100%;
+    bottom: 0;
+    pointer-events: none;
+
+  } */
+   .expand-btn{
+    /* appearance: inherit !important; */
+    appearance: none;
+    display: block;
+    /* border: 1px solid black ; */
+    padding: 7px 15px;
+    position: relative;
+    border-radius: .25rem;
+    cursor: pointer;
+    margin: 0px auto 0 auto;
+    z-index: 3;
+    background-color: #08AEEA;
+    background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
+    
+
+
+    /* background-color: white !important; */
+   }
+   .expand-btn::before{
+    content: "Voir plus";
+    color: white;
+    font-size: 1em;
+    font-weight: 600;
+   }
+   .expand-btn:checked::before{
+    content: "Voir moins";
+   }
+   .shrink-div-content:has( + .expand-btn:checked){
+        max-height: none;
+        margin-bottom: 20px;
+   }

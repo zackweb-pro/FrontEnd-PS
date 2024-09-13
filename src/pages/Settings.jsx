@@ -3,7 +3,7 @@ import somaplogo from '../assets/somap-logo.png'
 import '../css/dashboard.css'
 import Menu from '../components/Menu'
 import SettingsContent from '../components/SettingsContent'
-import Alert from '../components/Alert'
+// import Alert from '../components/Alert'
 function Dashboard(){
     return(
         <div className="dashboard">

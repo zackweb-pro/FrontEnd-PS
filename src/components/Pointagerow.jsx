@@ -24,7 +24,7 @@ export default function Demande(props){
                 <button type="submit" style={{background: "none", border: "none", outline: "none"}}>
 
                 <FaRegCalendarCheck  style={{cursor: "pointer", color: "green", fontSize: "22px"}}/>
-                </button>
+                </button> 
 
                     </form>
                 </td>
